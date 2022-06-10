@@ -78,7 +78,7 @@ This is a playground script to verify next steps.
 
 ```ruby
 
-board = Battleship::Setup.init
+board = Battleship::Commands::Setup.init
 puts board
 ```
 

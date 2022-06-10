@@ -19,6 +19,10 @@ module Battleship
       false
     end
 
+    def water?
+      false
+    end
+
     def hit!
       hit?
     end

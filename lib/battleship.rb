@@ -5,12 +5,12 @@ module Battleship
   require_relative 'battleship/commands/draw'
   require_relative 'battleship/commands/draw_horizontal'
   require_relative 'battleship/commands/draw_vertical'
+  require_relative 'battleship/commands/populate'
+  require_relative 'battleship/commands/setup'
 
   require_relative 'battleship/unit'
   require_relative 'battleship/water'
   require_relative 'battleship/ship'
 
   require_relative 'battleship/ship_type'
-
-  require_relative 'battleship/setup'
 end
