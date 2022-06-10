@@ -80,6 +80,9 @@ This is a playground script to verify next steps.
 
 board = Battleship::Commands::Setup.init
 puts board
+
+Battleship::Commands::Fire.new(board, 1, 1).call
+
 ```
 
 ### Output Examples

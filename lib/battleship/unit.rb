@@ -4,15 +4,16 @@ module Battleship
   class Unit
     attr_reader :name, :size
 
-    def initialize(name:, size:, character:)
+    def initialize(name:, size:, character:, reveal: false)
       @name = name
       @size = size
       @character = character
       @hitpoints = size
+      @reveal = reveal
     end
 
     def to_s
-      @character
+      @reveal ? @character : '~'
     end
 
     def hit?

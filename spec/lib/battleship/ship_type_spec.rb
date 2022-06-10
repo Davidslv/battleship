@@ -9,7 +9,7 @@ module Battleship
         expected_characters = %w[C B D S P]
 
         expect(
-          described_class.ships.map(&:to_s)
+          described_class.ships(reveal: true).map(&:to_s)
         ).to eq(expected_characters)
       end
     end

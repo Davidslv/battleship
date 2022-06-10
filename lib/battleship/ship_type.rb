@@ -2,16 +2,14 @@
 
 module Battleship
   class ShipType
-    SHIPS = [
-      Battleship::Ship.new(name: 'Carrier', size: 5, character: 'C'),
-      Battleship::Ship.new(name: 'Battleship', size: 4, character: 'B'),
-      Battleship::Ship.new(name: 'Destroyer', size: 3, character: 'D'),
-      Battleship::Ship.new(name: 'Submarine', size: 3, character: 'S'),
-      Battleship::Ship.new(name: 'Patrol Boat', size: 2, character: 'P')
-    ].freeze
-
-    def self.ships
-      SHIPS
+    def self.ships(reveal: false)
+      [
+        Battleship::Ship.new(name: 'Carrier', size: 5, character: 'C', reveal: reveal),
+        Battleship::Ship.new(name: 'Battleship', size: 4, character: 'B', reveal: reveal),
+        Battleship::Ship.new(name: 'Destroyer', size: 3, character: 'D', reveal: reveal),
+        Battleship::Ship.new(name: 'Submarine', size: 3, character: 'S', reveal: reveal),
+        Battleship::Ship.new(name: 'Patrol Boat', size: 2, character: 'P', reveal: reveal)
+      ]
     end
   end
 end

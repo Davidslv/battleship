@@ -4,12 +4,12 @@ module Battleship
   module Commands
     class Setup
       class << self
-        def init
+        def init(reveal: false)
           board = Battleship::Board.new
 
           Battleship::Commands::Populate.new(
             board: board,
-            ships: Battleship::ShipType.ships
+            ships: Battleship::ShipType.ships(reveal: reveal)
           ).perform
 
           Battleship::Draw.board(board)

@@ -4,12 +4,22 @@ module Battleship
       described_class.new(
         name: 'random',
         size: 0,
-        character: 'Z'
+        character: 'Z',
+        reveal: reveal
       )
     end
+    let(:reveal) { true }
 
     describe '#to_s' do
-      it { expect(subject.to_s).to eq('Z') }
+      context 'when reveal is true' do
+        it { expect(subject.to_s).to eq('Z') }
+      end
+
+      context 'when reveal is false' do
+        let(:reveal) { false }
+
+        it { expect(subject.to_s).to eq('~') }
+      end
     end
 
     describe '#hit?' do
