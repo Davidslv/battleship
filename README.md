@@ -6,7 +6,7 @@
 
 The board is 10x10 – and the individual squares on the board are identified by numbers.
 
-On one grid the player arranges ships and records the shots by the opponent. 
+On one grid the player arranges ships and records the shots by the opponent.
 On the other grid, the player records their own shots.
 
 
@@ -69,4 +69,66 @@ After running the rspec command, a new directory is created to show test coverag
 
 ```
 $ open coverage/index.html
+```
+
+
+## Setup Script
+
+This is a playground script to verify next steps.
+
+```ruby
+
+board = Battleship::Board.new
+ships = Battleship::ShipType.ships
+
+ships.each do |ship|
+  command = rand > 0.5 ? :vertical : :horizontal
+
+  if command == :vertical
+    x = rand(0...Battleship::Board::BOARD_SIZE)
+    y1 = rand(0...Battleship::Board::BOARD_SIZE - ship.size)
+    y2 = y1 + ship.size - 1
+
+    Battleship::Commands::DrawVertical.new(board, x, y1, y2, ship).perform
+  else
+    x1 = rand(0...Battleship::Board::BOARD_SIZE - ship.size)
+    x2 = x1 + ship.size - 1
+    y = rand(0...Battleship::Board::BOARD_SIZE)
+
+    Battleship::Commands::DrawHorizontal.new(board, x1, x2, y, ship).perform
+  end
+end
+
+puts board
+```
+
+### Output Examples
+
+```ruby
+
+  0 1 2 3 4 5 6 7 8 9
+0 ~ ~ ~ ~ ~ ~ ~ B ~ ~
+1 ~ S S S ~ P P B ~ ~
+2 ~ ~ ~ ~ ~ ~ ~ B ~ ~
+3 ~ ~ ~ ~ ~ ~ ~ B ~ ~
+4 ~ ~ ~ D ~ ~ ~ ~ ~ ~
+5 ~ ~ ~ D ~ ~ ~ ~ ~ ~
+6 ~ ~ ~ D ~ ~ ~ ~ ~ ~
+7 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+8 ~ ~ ~ ~ C C C C C ~
+9 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+```
+
+```ruby
+  0 1 2 3 4 5 6 7 8 9
+0 ~ ~ ~ ~ ~ ~ ~ S ~ ~
+1 ~ C ~ ~ ~ ~ ~ S ~ ~
+2 ~ C ~ ~ ~ ~ ~ S ~ ~
+3 ~ C ~ ~ ~ ~ ~ ~ ~ ~
+4 ~ C ~ ~ ~ ~ B ~ ~ D
+5 ~ C ~ ~ ~ ~ B ~ ~ D
+6 ~ ~ ~ ~ ~ ~ B ~ ~ D
+7 ~ ~ ~ ~ ~ ~ B ~ ~ ~
+8 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+9 ~ ~ ~ P P ~ ~ ~ ~ ~
 ```

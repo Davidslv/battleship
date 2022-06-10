@@ -25,7 +25,13 @@ module Battleship
     end
 
     def to_s
-      @board.map { |row| row.join(' ') }.join("\n")
+      header = (0...10).to_a.prepend(' ').join(' ')
+
+      body = @board.each_with_index.map do |row, index|
+        [index, row].join(' ')
+      end
+
+      [header, body].join("\n")
     end
 
     private
