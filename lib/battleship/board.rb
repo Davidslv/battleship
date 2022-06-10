@@ -33,6 +33,10 @@ module Battleship
       [header, body].join("\n")
     end
 
+    def to_a
+      @board
+    end
+
     private
 
     def valid?(x, y)

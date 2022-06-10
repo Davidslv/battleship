@@ -31,5 +31,9 @@ module Battleship
     describe '#to_s' do
       it { expect(subject.to_s).to be_kind_of(String) }
     end
+
+    describe '#to_a' do
+      it { expect(subject.to_a).to be_kind_of(Array) }
+    end
   end
 end
