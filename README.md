@@ -6,9 +6,10 @@
 
 The board is 10x10 – and the individual squares on the board are identified by numbers.
 
-On one grid the player arranges ships and records the shots by the opponent.
-On the other grid, the player records their own shots.
+The initial phase of this game a player will be guessing where each ship has been positioned.
+Essentially you will be playing against the computer.
 
+You will have limited amount of missiles, this means that you lose the game if you run out of missiles.
 
 ## What is provided
 
@@ -30,7 +31,7 @@ On the other grid, the player records their own shots.
 
 ### Installation
 
-This project was created using ruby 2.7.2 (see .ruby-version).
+This project was created using ruby 3.0.0 (see [.ruby-version](https://github.com/Davidslv/battleship/blob/main/.ruby-version)).
 
 I use rbenv to install different ruby versions, you may need to install [homebrew](https://brew.sh).
 
@@ -85,33 +86,42 @@ Battleship::Commands::Fire.new(board, 1, 1).call
 
 ```
 
-### Output Examples
 
-```ruby
 
-  0 1 2 3 4 5 6 7 8 9
-0 ~ ~ ~ ~ ~ ~ ~ B ~ ~
-1 ~ S S S ~ P P B ~ ~
-2 ~ ~ ~ ~ ~ ~ ~ B ~ ~
-3 ~ ~ ~ ~ ~ ~ ~ B ~ ~
-4 ~ ~ ~ D ~ ~ ~ ~ ~ ~
-5 ~ ~ ~ D ~ ~ ~ ~ ~ ~
-6 ~ ~ ~ D ~ ~ ~ ~ ~ ~
-7 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-8 ~ ~ ~ ~ C C C C C ~
-9 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+## Game Setup
+
+### Start application
+
+```shell
+irb -r ./lib/battleship.rb
 ```
 
+### Start a new board
+
+You can see where the ships are positioned by changing the parameter `reveal` to `true`,
+by default it is `false`.
+
 ```ruby
-  0 1 2 3 4 5 6 7 8 9
-0 ~ ~ ~ ~ ~ ~ ~ S ~ ~
-1 ~ C ~ ~ ~ ~ ~ S ~ ~
-2 ~ C ~ ~ ~ ~ ~ S ~ ~
-3 ~ C ~ ~ ~ ~ ~ ~ ~ ~
-4 ~ C ~ ~ ~ ~ B ~ ~ D
-5 ~ C ~ ~ ~ ~ B ~ ~ D
-6 ~ ~ ~ ~ ~ ~ B ~ ~ D
-7 ~ ~ ~ ~ ~ ~ B ~ ~ ~
-8 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-9 ~ ~ ~ P P ~ ~ ~ ~ ~
+board = Battleship::Commands::Setup.init(reveal: false)
+```
+
+### Fire a missile
+
+Firing a missile has several outcomes:
+- You hit water, you will see the `O` character on the board;
+- You hit a ship, you will see the `X` character on the board;
+- You sink a ship, this will happen when you have found all pieces of the ship;
+- You send an invalid coordinate, that will return invalid.
+
+There is metadata as output, this will be used later to fuel the API.
+
+```ruby
+Battleship::Commands::Fire.new(board, 1, 1).call
+=> {:valid=>true, :water=>true, :hit=>false, :sunk=>false, :name=>"Water"}
+Battleship::Commands::Fire.new(board, 11, 15).call
+=> {:valid=>false}
+Battleship::Commands::Fire.new(board, 5, 5).call
+=> {:valid=>true, :water=>false, :hit=>true, :sunk=>false, :name=>"Carrier"}
+
+puts board
 ```
