@@ -1,20 +1,7 @@
 # frozen_string_literal: true
 
 module Battleship
-  class Ship
-    attr_reader :name, :size
-
-    def initialize(name:, size:, character:)
-      @name = name
-      @size = size
-      @character = character
-      @hitpoints = size
-    end
-
-    def to_s
-      @character
-    end
-
+  class Ship < Unit
     def hit?
       true
     end

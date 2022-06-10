@@ -6,7 +6,10 @@ module Battleship
   require_relative 'battleship/commands/draw_horizontal'
   require_relative 'battleship/commands/draw_vertical'
 
+  require_relative 'battleship/unit'
+  require_relative 'battleship/water'
   require_relative 'battleship/ship'
+
   require_relative 'battleship/ship_type'
 
   require_relative 'battleship/setup'
