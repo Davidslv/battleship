@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Battleship
   class Unit
     attr_reader :name, :size

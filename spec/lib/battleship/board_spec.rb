@@ -4,7 +4,7 @@ module Battleship
 
     describe '#get' do
       context 'when within board boundaries' do
-        it { expect(subject.get(1, 1)).to eq('~') }
+        it { expect(subject.get(1, 1)).to be_kind_of(Battleship::Water) }
       end
 
       context 'when outside board boundaries' do

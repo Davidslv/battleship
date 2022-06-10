@@ -6,7 +6,7 @@ module Battleship
 
       context 'within boundaries' do
         it 'adds a ship horizontally in the given coordinates' do
-          expected_board =[
+          expected_board = [
             %w[~ ~ ~ ~ ~ ~ ~ ~ ~ ~],
             %w[A A A ~ ~ ~ ~ ~ ~ ~],
             %w[~ ~ ~ ~ ~ ~ ~ ~ ~ ~],

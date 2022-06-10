@@ -3,11 +3,10 @@
 module Battleship
   class Board
     BOARD_SIZE = 10
-    DEFAULT_VALUE = '~'
 
     def initialize
       @board = Array.new(BOARD_SIZE) do
-        Array.new(BOARD_SIZE) { DEFAULT_VALUE }
+        Array.new(BOARD_SIZE) { Battleship::Water.new }
       end
     end
 
