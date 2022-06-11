@@ -19,7 +19,7 @@ module Battleship
             %w[~ ~ ~ ~ ~ ~ ~ ~ ~ ~],
           ]
 
-          subject.perform
+          subject.call
           assert_equal_board(board, expected_board)
         end
       end

@@ -10,7 +10,7 @@ module Battleship
           Battleship::Commands::Populate.new(
             board: board,
             ships: Battleship::ShipType.ships(reveal: reveal)
-          ).perform
+          ).call
 
           Battleship::Draw.board(board)
 

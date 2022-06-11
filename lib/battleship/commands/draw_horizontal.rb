@@ -11,10 +11,7 @@ module Battleship
         @ship = ship
       end
 
-      def perform
-        # TODO: validate boundaries
-        # Reject when outside of the board
-
+      def call
         (x1..x2).each do |x|
           @board.set(x, y, ship)
         end

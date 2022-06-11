@@ -11,7 +11,7 @@ module Battleship
         @ship = ship
       end
 
-      def perform
+      def call
         (y1..y2).each do |y|
           @board.set(x, y, ship)
         end
