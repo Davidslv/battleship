@@ -88,6 +88,16 @@ Battleship::Commands::Fire.new(board, 1, 1).call
 
 ## Game Setup
 
+
+## Play the Game
+
+To play the game you will provide coordinates separated by space.
+
+```shell
+ruby ./lib/battleship.rb
+```
+
+
 ### Start application
 
 ```shell
