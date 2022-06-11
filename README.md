@@ -72,20 +72,6 @@ After running the rspec command, a new directory is created to show test coverag
 $ open coverage/index.html
 ```
 
-
-## Setup Script
-
-This is a playground script to verify next steps.
-
-```ruby
-
-board = Battleship::Commands::Setup.init
-puts board
-
-Battleship::Commands::Fire.new(board, 1, 1).call
-
-```
-
 ## Game Setup
 
 
