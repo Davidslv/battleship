@@ -10,6 +10,8 @@ module Battleship
 
       def call
         @ships.each { |ship| populate(ship) }
+
+        @board
       end
 
       private

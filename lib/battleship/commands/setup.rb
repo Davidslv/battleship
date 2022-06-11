@@ -5,16 +5,10 @@ module Battleship
     class Setup
       class << self
         def init(reveal: false)
-          board = Battleship::Board.new
-
           Battleship::Commands::Populate.new(
-            board: board,
+            board: Battleship::Board.new,
             ships: Battleship::ShipType.ships(reveal: reveal)
           ).call
-
-          Battleship::Draw.board(board)
-
-          board
         end
       end
     end

@@ -86,8 +86,6 @@ Battleship::Commands::Fire.new(board, 1, 1).call
 
 ```
 
-
-
 ## Game Setup
 
 ### Start application
