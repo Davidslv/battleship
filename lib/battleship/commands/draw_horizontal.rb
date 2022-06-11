@@ -3,7 +3,7 @@
 module Battleship
   module Commands
     class DrawHorizontal
-      def initialize(board, x1, x2, y, ship)
+      def initialize(board, y, x1, x2, ship)
         @board = board
         @x1 = x1
         @x2 = x2

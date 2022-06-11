@@ -2,7 +2,7 @@ module Battleship
   module Commands
     RSpec.describe DrawHorizontal do
       let(:board) { Battleship::Board.new }
-      let(:subject) { described_class.new(board, 0, 2, 1, 'A') }
+      let(:subject) { described_class.new(board, 1, 0, 2, 'A') }
 
       context 'within boundaries' do
         it 'adds a ship horizontally in the given coordinates' do
