@@ -11,6 +11,13 @@ Essentially you will be playing against the computer.
 
 You will have limited amount of missiles, this means that you lose the game if you run out of missiles.
 
+## Game Demo
+
+For the purpose of the demo, all boats are revelead, this won't be the case during game play.
+
+https://user-images.githubusercontent.com/136777/173343104-fef39202-f4f6-437a-ab8c-ab1795958e88.mov
+
+
 ## What is provided
 
 - [RuboCop](https://docs.rubocop.org/rubocop/index.html)
