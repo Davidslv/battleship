@@ -11,7 +11,7 @@ module Battleship
   class Game
     def initialize
       system('clear')
-      Message.display('Enjoy your Game, CTRL+C to quit')
+      Message.display('Enjoy your Game, CTRL+C to quit.')
 
       @ships = Battleship::ShipType.ships
       @missiles = @ships.map(&:size).sum * 3
@@ -47,16 +47,19 @@ module Battleship
       @missiles -= 1
 
       if @missiles.zero? && @ships.all?(&:sunk?)
+        puts @board
         Message.display('Phew... You have have won the game.')
         exit
       end
 
       if @missiles.zero? && !@ships.all?(&:sunk?)
+        puts @board
         Message.display('You have have lost the game.')
         exit
       end
 
       if @ships.all?(&:sunk?)
+        puts @board
         Message.display('You have have won the game.')
         exit
       elsif fire[:water]
