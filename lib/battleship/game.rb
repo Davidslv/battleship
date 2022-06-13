@@ -6,7 +6,7 @@ module Battleship
       system('clear')
       Battleship::Commands::Message.display('Enjoy your Game, CTRL+C to quit.')
 
-      @ships = Battleship::ShipType.ships(reveal: true)
+      @ships = Battleship::ShipType.ships(reveal: false)
       @missiles = @ships.map(&:size).sum * 3
 
       @board = Battleship::Commands::Populate.new(
