@@ -11,7 +11,7 @@ module Battleship
   class Game
     def initialize
       system('clear')
-      Message.display("Enjoy your Game, CTRL+C to quit")
+      Message.display('Enjoy your Game, CTRL+C to quit')
 
       @ships = Battleship::ShipType.ships
       @missiles = @ships.map(&:size).sum * 3
@@ -25,7 +25,7 @@ module Battleship
     def run
       puts @board
 
-      while !@ships.all?(&:sunk?) do
+      until @ships.all?(&:sunk?)
         process_input
         update
         render
@@ -37,7 +37,7 @@ module Battleship
     def process_input
       Message.display("\n\nMissiles left: #{@missiles}") if @missiles < 34
       print "\nProvide coordinates: "
-      @x, @y = gets.chomp.split(' ').map(&:to_i)
+      @x, @y = gets.chomp.split.map(&:to_i)
     end
 
     def update
@@ -47,26 +47,26 @@ module Battleship
       @missiles -= 1
 
       if @missiles.zero? && @ships.all?(&:sunk?)
-        Message.display("Phew... You have have won the game.")
+        Message.display('Phew... You have have won the game.')
         exit
       end
 
       if @missiles.zero? && !@ships.all?(&:sunk?)
-        Message.display("You have have lost the game.")
+        Message.display('You have have lost the game.')
         exit
       end
 
       if @ships.all?(&:sunk?)
-        Message.display("You have have won the game.")
+        Message.display('You have have won the game.')
         exit
       elsif fire[:water]
-        Message.display("You have missed.")
+        Message.display('You have missed.')
       elsif fire[:sunk]
         Message.display("You have sunk a #{fire[:name]}.")
       elsif fire[:hit]
         Message.display("You have hit a #{fire[:name]}.")
       else
-        Message.display("Unknown...")
+        Message.display('Unknown...')
       end
     end
 
